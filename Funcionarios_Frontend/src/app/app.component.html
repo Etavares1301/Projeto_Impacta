@@ -1,0 +1,86 @@
+<router-outlet></router-outlet>
+
+<section class="row m-5">
+  <div class="col-12">
+    <div class="card card-form shadow-card">
+      <div class="card-header card-form-header mt-1">
+        <h4 class="form-section">
+          <i class="fa fa-user"></i> Cadastro de Funcionários
+        </h4>
+        <a class="heading-elements-toggle"
+          ><i class="ft-ellipsis-h font-medium-3"></i
+        ></a>
+      </div>
+      <div class="card-content">
+        <div class="card-body">
+          <form [formGroup]="formGroupEmployes" class="form row m-5">
+            <div class="col-12">
+              <div class="form-group row">
+                <div class="form-group mb-1 col-sm-12 col-md-7">
+                  <label for="name">Nome</label>
+                  <input
+                    type="text"
+                    class="form-control round"
+                    id="name"
+                    maxlength="250"
+                    formControlName="name"
+                  />
+                </div>
+                <div class="form-group mb-1 col-sm-12 col-md-7">
+                  <label for="lastName">Sobrenome</label>
+                  <input
+                    type="text"
+                    class="form-control round"
+                    id="lastName"
+                    maxlength="250"
+                    formControlName="lastName"
+                  />
+                </div>
+                <div class="form-group mb-1 col-sm-12 col-md-7">
+                  <label for="department">Departamento</label>
+                  <select
+                    type="text"
+                    class="form-control round"
+                    id="department"
+                    maxlength="250"
+                    formControlName="department"
+                  >
+                    <option value="1">RH</option>
+                    <option value="2">Financeiro</option>
+                    <option value="3">Compras</option>
+                    <option value="4">Atendimento</option>
+                    <option value="5">Zeladoria</option>
+                  </select>
+                </div>
+                <div class="form-group mb-1 col-sm-12 col-md-7">
+                  <label for="shift">Turno</label>
+                  <select
+                    type="text"
+                    class="form-control round"
+                    id="shift"
+                    maxlength="250"
+                    formControlName="shift"
+                  >
+                    <option value="1">Manhã</option>
+                    <option value="2">Tarde</option>
+                    <option value="3">Noite</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="form-group row">
+            <div class="mt-1 mb-1 d-flex justify-content-end align-items-end">
+              <button
+                class="btn btn-outline-info shadow-card"
+                (click)="onSave()"
+              >
+                Cadastrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
