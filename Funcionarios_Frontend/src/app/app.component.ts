@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EmployeesService } from './employees.service';
 import { ToastrService } from 'ngx-toastr';
+import { DepartmentEnum, descriptionDepartmentEnum } from './enumurable/department-enum';
+import { descriptionShiftEnum, ShiftEnum } from './enumurable/shift-enum';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Funcionários';
 
-  formGroupEmployes!: FormGroup
+  title = 'Funcionários';
+  formGroupEmployes!: FormGroup;
+  employesList: any;
+  newRegister: boolean = true;
 
   constructor(
     private formBilder: FormBuilder,
@@ -37,12 +41,26 @@ export class AppComponent implements OnInit {
     this._employesService.getEmployees().subscribe(
       (response: any) => {
         let dados = response && response.dados
+        this.employesList = dados;
         console.table(dados);
       },
       (error: any) => {
         console.error(error);
       }
     );
+  }
+
+  getDepartmentName(value: DepartmentEnum): string {
+    return descriptionDepartmentEnum[value];
+  }
+
+  getShifttName(value: ShiftEnum): string {
+    return descriptionShiftEnum[value];
+  }
+
+  onCancelOrNewRegister() {
+    this.newRegister = !this.newRegister;
+    this.formGroupEmployes.reset();
   }
 
   onSave() {

@@ -1,11 +1,11 @@
 <router-outlet></router-outlet>
-
-<section class="row m-5">
-  <div class="col-12">
-    <div class="card card-form shadow-card">
+<!-- Table -->
+<section class="row m-5" *ngIf="newRegister; else tableEmployes">
+  <div class="col-12 mt-5">
+    <div class="card card-form shadow-card mb-5">
       <div class="card-header card-form-header mt-1">
         <h4 class="form-section">
-          <i class="fa fa-user"></i> Cadastro de Funcionários
+          <i class="fa fa-user"></i> Tabela de Funcionários
         </h4>
         <a class="heading-elements-toggle"
           ><i class="ft-ellipsis-h font-medium-3"></i
@@ -13,70 +13,65 @@
       </div>
       <div class="card-content">
         <div class="card-body">
-          <form [formGroup]="formGroupEmployes" class="form row m-5">
-            <div class="col-12">
-              <div class="form-group row">
-                <div class="form-group mb-1 col-sm-12 col-md-7">
-                  <label for="name">Nome</label>
-                  <input
-                    type="text"
-                    class="form-control round"
-                    id="name"
-                    maxlength="250"
-                    formControlName="name"
-                  />
-                </div>
-                <div class="form-group mb-1 col-sm-12 col-md-7">
-                  <label for="lastName">Sobrenome</label>
-                  <input
-                    type="text"
-                    class="form-control round"
-                    id="lastName"
-                    maxlength="250"
-                    formControlName="lastName"
-                  />
-                </div>
-                <div class="form-group mb-1 col-sm-12 col-md-7">
-                  <label for="department">Departamento</label>
-                  <select
-                    type="text"
-                    class="form-control round"
-                    id="department"
-                    maxlength="250"
-                    formControlName="department"
-                  >
-                    <option value="1">RH</option>
-                    <option value="2">Financeiro</option>
-                    <option value="3">Compras</option>
-                    <option value="4">Atendimento</option>
-                    <option value="5">Zeladoria</option>
-                  </select>
-                </div>
-                <div class="form-group mb-1 col-sm-12 col-md-7">
-                  <label for="shift">Turno</label>
-                  <select
-                    type="text"
-                    class="form-control round"
-                    id="shift"
-                    maxlength="250"
-                    formControlName="shift"
-                  >
-                    <option value="1">Manhã</option>
-                    <option value="2">Tarde</option>
-                    <option value="3">Noite</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </form>
-          <div class="form-group row">
+          <div class="form-group row mb-2">
             <div class="mt-1 mb-1 d-flex justify-content-end align-items-end">
               <button
-                class="btn btn-outline-info shadow-card"
-                (click)="onSave()"
+                class="btn btn-outline-success shadow-card"
+                (click)="onCancelOrNewRegister()"
               >
-                Cadastrar
+                Novo Registro
               </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <table
+                id="users-contacts"
+                class="table table-middle dataTable table-white-space"
+                role="grid"
+                aria-describedby="users-contacts_info"
+              >
+                <thead class="bg-table-geia white">
+                  <tr>
+                    <th class="text-center">Código</th>
+                    <th class="text-center">⁠Nome do Funcionãrio</th>
+                    <th class="text-center">Departamento</th>
+                    <th class="text-center">Turno</th>
+                    <th class="text-center">Ações</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of employesList; let i = index">
+                  <tr>
+                    <td class="text-center">{{ item.id }}</td>
+                    <td class="text-center">
+                      <span>{{ item.name }} {{ item.lastName }}</span>
+                    </td>
+                    <td class="text-center">
+                      {{ getDepartmentName(item.department) }}
+                    </td>
+                    <td class="text-center">
+                      <span>{{ getShifttName(item.shift) }}</span>
+                    </td>
+                    <td class="text-center">
+                      <div
+                        role="group"
+                        class="btn-group d-flex justify-content-center align-items-center"
+                      >
+                        <button class="btn btn-sm btn-warning rounded-5">
+                          <i class="fa-solid fa-pen text-white"></i>
+                        </button>
+
+                        <button
+                          class="btn btn-sm btn-danger rounded-5"
+                          style="margin-left: 5px"
+                        >
+                          <i class="fa-solid fa-trash text-white"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -84,3 +79,97 @@
     </div>
   </div>
 </section>
+<!-- Register -->
+<ng-template #tableEmployes>
+  <section class="row m-5">
+    <div class="col-12 mt-5">
+      <div class="card card-form shadow-card">
+        <div class="card-header card-form-header mt-1">
+          <h4 class="form-section">
+            <i class="fa fa-user"></i> Cadastro de Funcionários
+          </h4>
+          <a class="heading-elements-toggle"
+            ><i class="ft-ellipsis-h font-medium-3"></i
+          ></a>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <form [formGroup]="formGroupEmployes" class="form row m-5">
+              <div class="col-12">
+                <div class="form-group row">
+                  <div class="form-group mb-1 col-sm-12 col-md-7">
+                    <label for="name">Nome</label>
+                    <input
+                      type="text"
+                      class="form-control round"
+                      id="name"
+                      maxlength="250"
+                      formControlName="name"
+                    />
+                  </div>
+                  <div class="form-group mb-1 col-sm-12 col-md-7">
+                    <label for="lastName">Sobrenome</label>
+                    <input
+                      type="text"
+                      class="form-control round"
+                      id="lastName"
+                      maxlength="250"
+                      formControlName="lastName"
+                    />
+                  </div>
+                  <div class="form-group mb-1 col-sm-12 col-md-7">
+                    <label for="department">Departamento</label>
+                    <select
+                      type="text"
+                      class="form-control round"
+                      id="department"
+                      maxlength="250"
+                      formControlName="department"
+                    >
+                      <option value="1">RH</option>
+                      <option value="2">Financeiro</option>
+                      <option value="3">Compras</option>
+                      <option value="4">Atendimento</option>
+                      <option value="5">Zeladoria</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-1 col-sm-12 col-md-7">
+                    <label for="shift">Turno</label>
+                    <select
+                      type="text"
+                      class="form-control round"
+                      id="shift"
+                      maxlength="250"
+                      formControlName="shift"
+                    >
+                      <option value="1">Manhã</option>
+                      <option value="2">Tarde</option>
+                      <option value="3">Noite</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="form-group row">
+              <div class="mt-1 mb-1 d-flex justify-content-end align-items-end">
+                <button
+                  class="btn btn-outline-success shadow-card"
+                  (click)="onCancelOrNewRegister()"
+                >
+                  Cancelar
+                </button>
+                <button
+                  class="btn btn-outline-info shadow-card"
+                  style="margin-left: 10px"
+                  (click)="onSave()"
+                >
+                  Cadastrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
