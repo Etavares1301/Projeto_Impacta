@@ -36,4 +36,17 @@ export class EmployeesService {
         })
       );
   }
+
+  delete(id: number): Observable<any> {
+    return this.http
+      .delete<any>(`http://localhost:5097/api/Employees?id=${id}`)
+      .pipe(
+        map((response) => {
+          return response;
+        }),
+        catchError((err) => {
+          return throwError(() => new Error(err));
+        })
+      );
+  }
 }

@@ -1,4 +1,5 @@
-﻿using WebApi_Employees.DataContext;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApi_Employees.DataContext;
 using WebApi_Employees.Models;
 
 namespace WebApi_Employees.Service.EmployeesService
@@ -11,9 +12,40 @@ namespace WebApi_Employees.Service.EmployeesService
             _context = context;
         }
 
-        public Task<ServiceResponse<EmployeesModel>> ActivatedEmployeesById(int id)
+        public async Task<ServiceResponse<List<EmployeesModel>>> ActivatedEmployeesById(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<EmployeesModel>> serviceResponse = new ServiceResponse<List<EmployeesModel>>();
+
+            try 
+            {
+                EmployeesModel functionary = _context.Employees.FirstOrDefault(x => x.Id == id);
+
+                if(functionary == null)
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Message = "Funcionário não encontrado!";
+                    serviceResponse.Sucess = false;
+
+                    return serviceResponse;
+
+                }
+                functionary.Active = false;
+                functionary.UpadateDate = DateTime.Now.ToLocalTime();
+
+                _context.Employees.Update(functionary);
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Dados = _context.Employees.ToList();
+
+            }
+            catch(Exception ex)
+            {
+                serviceResponse.Message = ex.Message;
+                serviceResponse.Sucess = false;
+            }
+
+            return serviceResponse;
+
         }
 
         public async Task<ServiceResponse<List<EmployeesModel>>> CreateEmployees(EmployeesModel newEmployees)
@@ -25,6 +57,9 @@ namespace WebApi_Employees.Service.EmployeesService
                     serviceResponse.Dados = null;
                     serviceResponse.Message = "Informar os dados!";
                     serviceResponse.Sucess= false;
+
+                    return serviceResponse;
+
                 }
                 _context.Add(newEmployees);
                 await _context.SaveChangesAsync();
@@ -39,9 +74,33 @@ namespace WebApi_Employees.Service.EmployeesService
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<EmployeesModel>> DeleteEmployeesById(int id)
+        public async Task<ServiceResponse<List<EmployeesModel>>> DeleteEmployeesById(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<EmployeesModel>> serviceResponse = new ServiceResponse<List<EmployeesModel>>();
+
+            try
+            {
+                EmployeesModel functionary = _context.Employees.FirstOrDefault(x => x.Id == id);
+
+                if (functionary == null)
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Message = "Funcionário não encontrado!";
+                    serviceResponse.Sucess = false;
+
+                }
+
+                _context.Employees.Remove(functionary);
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Dados = _context.Employees.ToList();
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Message = ex.Message;
+                serviceResponse.Sucess = false;
+            }
+            return serviceResponse;
         }
 
         public async Task<ServiceResponse<List<EmployeesModel>>> GetEmployees()
@@ -65,14 +124,64 @@ namespace WebApi_Employees.Service.EmployeesService
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<EmployeesModel>> GetEmployeesById(int id)
+        public async Task<ServiceResponse<EmployeesModel>> GetEmployeesById(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<EmployeesModel> serviceResponse = new ServiceResponse<EmployeesModel>();
+
+            try
+            {
+                EmployeesModel functionary = _context.Employees.FirstOrDefault(x => x.Id == id);
+                
+                if (functionary == null)
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Message = "Funcionário não encontrado!";
+                    serviceResponse.Sucess = false ;
+                }
+                serviceResponse.Dados = functionary;
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Message = ex.Message;
+                serviceResponse.Sucess = false;
+            }
+            return serviceResponse;
         }
 
-        public Task<ServiceResponse<List<EmployeesModel>>> UpdateEmployyes(EmployeesModel updateEmployees)
+        public async Task<ServiceResponse<List<EmployeesModel>>> UpdateEmployyes(EmployeesModel updateEmployees)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<EmployeesModel>> serviceResponse = new ServiceResponse<List<EmployeesModel>>();
+
+            try
+            {
+                EmployeesModel functionary = _context.Employees.AsNoTracking().FirstOrDefault(x => x.Id == updateEmployees.Id);
+
+                if (functionary == null)
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Message = "Funcionário não encontrado!";
+                    serviceResponse.Sucess = false;
+
+                    return serviceResponse;
+
+                }
+                functionary.UpadateDate = DateTime.Now.ToLocalTime();
+                _context.Employees.Update(functionary);
+
+
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Dados = _context.Employees.ToList(); 
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Message = ex.Message;
+                serviceResponse.Sucess = false;
+            }
+            return serviceResponse;
         }
+
+
     }
 }
+

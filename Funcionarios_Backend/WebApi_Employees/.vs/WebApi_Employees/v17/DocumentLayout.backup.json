@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|c:\\users\\eduta\\desktop\\projeto_impacta\\projeto_impacta\\funcionarios_backend\\webapi_employees\\webapi_employees\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|solutionrelative:webapi_employees\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|c:\\users\\eduta\\desktop\\projeto_impacta\\projeto_impacta\\funcionarios_backend\\webapi_employees\\webapi_employees\\enums\\shiftenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|solutionrelative:webapi_employees\\enums\\shiftenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|c:\\users\\eduta\\desktop\\projeto_impacta\\projeto_impacta\\funcionarios_backend\\webapi_employees\\webapi_employees\\enums\\departmentenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|solutionrelative:webapi_employees\\enums\\departmentenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|c:\\users\\eduta\\desktop\\projeto_impacta\\projeto_impacta\\funcionarios_backend\\webapi_employees\\webapi_employees\\service\\employeesservice\\employeesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,6 +21,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|c:\\users\\eduta\\desktop\\projeto_impacta\\projeto_impacta\\funcionarios_backend\\webapi_employees\\webapi_employees\\service\\employeesservice\\iemployeesinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|solutionrelative:webapi_employees\\service\\employeesservice\\iemployeesinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|c:\\users\\eduta\\desktop\\projeto_impacta\\projeto_impacta\\funcionarios_backend\\webapi_employees\\webapi_employees\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F7E8F2D-CEBD-405C-8234-4B07E321EF13}|WebApi_Employees\\WebApi_Employees.csproj|solutionrelative:webapi_employees\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,51 +39,80 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ShiftEnum.cs",
+              "DocumentMoniker": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Enums\\ShiftEnum.cs",
+              "RelativeDocumentMoniker": "WebApi_Employees\\Enums\\ShiftEnum.cs",
+              "ToolTip": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Enums\\ShiftEnum.cs",
+              "RelativeToolTip": "WebApi_Employees\\Enums\\ShiftEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T14:26:30.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DepartmentEnum.cs",
+              "DocumentMoniker": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Enums\\DepartmentEnum.cs",
+              "RelativeDocumentMoniker": "WebApi_Employees\\Enums\\DepartmentEnum.cs",
+              "ToolTip": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Enums\\DepartmentEnum.cs",
+              "RelativeToolTip": "WebApi_Employees\\Enums\\DepartmentEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T14:25:12.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Program.cs",
               "RelativeDocumentMoniker": "WebApi_Employees\\Program.cs",
               "ToolTip": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Program.cs",
               "RelativeToolTip": "WebApi_Employees\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAADwvyQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-19T01:36:46.067Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EmployeesController.cs",
               "DocumentMoniker": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Controllers\\EmployeesController.cs",
               "RelativeDocumentMoniker": "WebApi_Employees\\Controllers\\EmployeesController.cs",
               "ToolTip": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Controllers\\EmployeesController.cs",
               "RelativeToolTip": "WebApi_Employees\\Controllers\\EmployeesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAiwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T01:00:36.642Z"
+              "WhenOpened": "2025-02-19T01:00:36.642Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "EmployeesService.cs",
               "DocumentMoniker": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Service\\EmployeesService\\EmployeesService.cs",
               "RelativeDocumentMoniker": "WebApi_Employees\\Service\\EmployeesService\\EmployeesService.cs",
               "ToolTip": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Service\\EmployeesService\\EmployeesService.cs",
               "RelativeToolTip": "WebApi_Employees\\Service\\EmployeesService\\EmployeesService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAwwGYAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T01:08:39.923Z"
+              "WhenOpened": "2025-02-19T01:08:39.923Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IEmployeesInterface.cs",
               "DocumentMoniker": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Service\\EmployeesService\\IEmployeesInterface.cs",
               "RelativeDocumentMoniker": "WebApi_Employees\\Service\\EmployeesService\\IEmployeesInterface.cs",
               "ToolTip": "C:\\Users\\eduta\\Desktop\\projeto_impacta\\Projeto_Impacta\\Funcionarios_Backend\\WebApi_Employees\\WebApi_Employees\\Service\\EmployeesService\\IEmployeesInterface.cs",
               "RelativeToolTip": "WebApi_Employees\\Service\\EmployeesService\\IEmployeesInterface.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T01:09:10.335Z"
+              "WhenOpened": "2025-02-19T01:09:10.335Z",
+              "EditorCaption": ""
             }
           ]
         }

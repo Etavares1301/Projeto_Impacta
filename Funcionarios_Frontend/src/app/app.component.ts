@@ -95,7 +95,33 @@ export class AppComponent implements OnInit {
     catch (error: any) {
       console.error(error);
     }
+  }
 
+  onDelete(id: number) {
+    try {
+      this._employesService.delete(id).subscribe({
+        next: () => {
+          this.toastr.success(`Funcionário apagado com sucesso!`);
+          setTimeout(() => {
+            this.toastr.toastrConfig.preventDuplicates = true;
+            this.getEmployees();
+          }, 1000);
+        },
+        error: (e: any) => {
+          this.toastr.toastrConfig.preventDuplicates = true;
+          var mensagemTratada = e.message.replace('Error:', '');
+          if (mensagemTratada.includes('[object Object]')) {
+            this.toastr.error('Erro ao tentar apagar funcionário.');
+            return;
+          } else {
+            this.toastr.error('Erro ao tentar apagar funcionário.');
+          }
+        },
+      });
+    }
+    catch (error: any) {
+      console.error(error);
+    }
 
   }
 }

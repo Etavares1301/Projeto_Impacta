@@ -44,5 +44,109 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "WebApi_Employees.Controllers.EmployeesController",
+    "Method": "UpdateEmployyes",
+    "RelativePath": "api/Employees",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateEmployees",
+        "Type": "WebApi_Employees.Models.EmployeesModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApi_Employees.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[WebApi_Employees.Models.EmployeesModel, WebApi_Employees, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi_Employees.Controllers.EmployeesController",
+    "Method": "DeleteEmployeesById",
+    "RelativePath": "api/Employees",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApi_Employees.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[WebApi_Employees.Models.EmployeesModel, WebApi_Employees, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi_Employees.Controllers.EmployeesController",
+    "Method": "GetEmPloyessById",
+    "RelativePath": "api/Employees/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApi_Employees.Models.ServiceResponse\u00601[[WebApi_Employees.Models.EmployeesModel, WebApi_Employees, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi_Employees.Controllers.EmployeesController",
+    "Method": "ActivatedEmployeesById",
+    "RelativePath": "api/Employees/InactiveEmployeess",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApi_Employees.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[WebApi_Employees.Models.EmployeesModel, WebApi_Employees, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
