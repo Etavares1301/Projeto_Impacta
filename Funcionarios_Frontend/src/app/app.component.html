@@ -57,7 +57,10 @@
                         role="group"
                         class="btn-group d-flex justify-content-center align-items-center"
                       >
-                        <button class="btn btn-sm btn-warning rounded-5">
+                        <button
+                          class="btn btn-sm btn-warning rounded-5"
+                          (click)="onUpdateEmployee(item.id)"
+                        >
                           <i class="fa-solid fa-pen text-white"></i>
                         </button>
 
@@ -164,7 +167,7 @@
                   style="margin-left: 10px"
                   (click)="onSave()"
                 >
-                  Cadastrar
+                  {{ titleButton }}
                 </button>
               </div>
             </div>

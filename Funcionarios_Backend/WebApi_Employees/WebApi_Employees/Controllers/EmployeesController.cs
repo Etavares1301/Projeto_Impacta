@@ -35,9 +35,9 @@ namespace WebApi_Employees.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<ServiceResponse<List<EmployeesModel>>>> UpdateEmployyes(EmployeesModel updateEmployees)
+        public async Task<ActionResult<ServiceResponse<List<EmployeesModel>>>> UpdateEmployees(EmployeesModel updateEmployees)
         {
-            ServiceResponse<List<EmployeesModel>> serviceResponse = await _employeesInterface.UpdateEmployyes(updateEmployees);
+            ServiceResponse<List<EmployeesModel>> serviceResponse = await _employeesInterface.UpdateEmployees(updateEmployees);
             return Ok(serviceResponse);
         }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using WebApi_Employees.DataContext;
 using WebApi_Employees.Models;
 
@@ -148,7 +149,7 @@ namespace WebApi_Employees.Service.EmployeesService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<EmployeesModel>>> UpdateEmployyes(EmployeesModel updateEmployees)
+        public async Task<ServiceResponse<List<EmployeesModel>>> UpdateEmployees(EmployeesModel updateEmployees)
         {
             ServiceResponse<List<EmployeesModel>> serviceResponse = new ServiceResponse<List<EmployeesModel>>();
 
@@ -165,10 +166,15 @@ namespace WebApi_Employees.Service.EmployeesService
                     return serviceResponse;
 
                 }
+               
+                functionary.Name = updateEmployees.Name;
+                functionary.LastName = updateEmployees.LastName;
+                functionary.Department = updateEmployees.Department;
+                functionary.Shift = updateEmployees.Shift;
                 functionary.UpadateDate = DateTime.Now.ToLocalTime();
+
+
                 _context.Employees.Update(functionary);
-
-
                 await _context.SaveChangesAsync();
 
                 serviceResponse.Dados = _context.Employees.ToList(); 

@@ -47,7 +47,7 @@
   },
   {
     "ContainingType": "WebApi_Employees.Controllers.EmployeesController",
-    "Method": "UpdateEmployyes",
+    "Method": "UpdateEmployees",
     "RelativePath": "api/Employees",
     "HttpMethod": "PUT",
     "IsController": true,

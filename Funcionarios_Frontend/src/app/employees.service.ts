@@ -24,6 +24,19 @@ export class EmployeesService {
       )
   }
 
+  getEmployeeById(id: number): Observable<any> {
+    return this.http
+      .get<any>(`http://localhost:5097/api/Employees/${id}`)
+      .pipe(
+        map((response) => {
+          return response;
+        }),
+        catchError((error) => {
+          return throwError(() => new Error(error || 'Erro no servidor!'))
+        })
+      )
+  }
+
   register(employee: any): Observable<any> {
     return this.http
       .post<any>('http://localhost:5097/api/Employees', employee)
@@ -35,6 +48,19 @@ export class EmployeesService {
           return throwError(() => new Error(err));
         })
       );
+  }
+
+  update(data: any): Observable<any> {
+    return this.http
+      .put('http://localhost:5097/api/Employees', data)
+      .pipe(
+        map((response) => {
+          return response;
+        }),
+        catchError((err) => {
+          return throwError(() => new Error(err));
+        })
+      )
   }
 
   delete(id: number): Observable<any> {

@@ -4,6 +4,7 @@ import { EmployeesService } from './employees.service';
 import { ToastrService } from 'ngx-toastr';
 import { DepartmentEnum, descriptionDepartmentEnum } from './enumurable/department-enum';
 import { descriptionShiftEnum, ShiftEnum } from './enumurable/shift-enum';
+import { EmployeeVM } from './model/employeeVM';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent implements OnInit {
   formGroupEmployes!: FormGroup;
   employesList: any;
   newRegister: boolean = true;
+  titleButton!: string;
+  employesVM!: EmployeeVM;
 
   constructor(
     private formBilder: FormBuilder,
@@ -30,6 +33,7 @@ export class AppComponent implements OnInit {
 
   createForm(): void {
     this.formGroupEmployes = this.formBilder.group({
+      id: null,
       name: new FormControl(['']),
       lastName: new FormControl(['']),
       department: new FormControl([null]),
@@ -60,11 +64,29 @@ export class AppComponent implements OnInit {
 
   onCancelOrNewRegister() {
     this.newRegister = !this.newRegister;
+    this.titleButton = 'Cadastrar';
     this.formGroupEmployes.reset();
   }
 
+  onUpdateEmployee(id: number) {
+    this._employesService.getEmployeeById(id).subscribe({
+      next: data => {
+        this.titleButton = 'Atualizar';
+        let functionary = data && data.dados;
+        this.newRegister = !this.newRegister;
+        this.formGroupEmployes.reset();
+        this.formGroupEmployes.patchValue(functionary);
+      },
+      error: err => {
+        console.error(err);
+        console.error("Funcionário não encontrado.");
+      }
+    })
+
+  }
   onSave() {
-    let formEmployesVM = {
+    let idUser = this.formGroupEmployes.controls['id'].value;
+    this.employesVM = {
       name: this.formGroupEmployes.get('name')?.value,
       lastName: this.formGroupEmployes.get('lastName')?.value,
       department: Number(this.formGroupEmployes.get('department')?.value),
@@ -72,25 +94,51 @@ export class AppComponent implements OnInit {
     };
 
     try {
-      this._employesService.register(formEmployesVM).subscribe({
-        next: () => {
-          this.toastr.success(`Cadastrado com sucesso!`);
-          this.formGroupEmployes.reset();
-          setTimeout(() => {
+      if (!idUser) {
+        this._employesService.register(this.employesVM).subscribe({
+          next: () => {
+            this.toastr.success(`Cadastrado com sucesso!`);
+            this.onCancelOrNewRegister();
+            this.getEmployees();
+            setTimeout(() => {
+              this.toastr.toastrConfig.preventDuplicates = true;
+            }, 1000);
+          },
+          error: (e: any) => {
             this.toastr.toastrConfig.preventDuplicates = true;
-          }, 1000);
-        },
-        error: (e: any) => {
-          this.toastr.toastrConfig.preventDuplicates = true;
-          var mensagemTratada = e.message.replace('Error:', '');
-          if (mensagemTratada.includes('[object Object]')) {
-            this.toastr.error('Erro ao tentar cadastrar');
-            return;
-          } else {
-            this.toastr.error('Erro ao tentar cadastrar');
-          }
-        },
-      });
+            var mensagemTratada = e.message.replace('Error:', '');
+            if (mensagemTratada.includes('[object Object]')) {
+              this.toastr.error('Erro ao tentar cadastrar.');
+              return;
+            } else {
+              this.toastr.error('Erro ao tentar cadastrar.');
+            }
+          },
+        });
+      } else {
+        this.employesVM.id = idUser
+        console.log(this.employesVM)
+        this._employesService.update(this.employesVM).subscribe({
+          next: data => {
+            this.toastr.success(`Atualizado com sucesso!`);
+            this.onCancelOrNewRegister();
+            this.getEmployees();
+            setTimeout(() => {
+              this.toastr.toastrConfig.preventDuplicates = true;
+            }, 1000);
+          },
+          error: (e: any) => {
+            this.toastr.toastrConfig.preventDuplicates = true;
+            var mensagemTratada = e.message.replace('Error:', '');
+            if (mensagemTratada.includes('[object Object]')) {
+              this.toastr.error('Erro ao tentar atualizar.');
+              return;
+            } else {
+              this.toastr.error('Erro ao tentar atualizar.');
+            }
+          },
+        })
+      }
     }
     catch (error: any) {
       console.error(error);
